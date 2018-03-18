@@ -23,8 +23,8 @@ public class Producer implements Runnable{
             rand = BeerType.random();
             // The beer with the name of the producer and a random style
             Beer b = new Beer(this.name,rand);
-            // The qty with a random value between 1-20
-            int qty = ThreadLocalRandom.current().nextInt(1,49);
+            // The qty with a random value between 1-99
+            int qty = ThreadLocalRandom.current().nextInt(1,99);
             // Put the beer and the qty into the monitor
             bar.put(b,qty);
             // Print action
@@ -41,7 +41,7 @@ public class Producer implements Runnable{
         // The loop iterates until there is zero beer in the bar
         }while (this.bar.hasBeer());
         // Final message
-        System.out.println("Producer " + this.producerId + ":There is no more beer :(");
+        System.out.println("Producer " + this.producerId + ":closing bar :(");
         // Close the bar
         bar.close();
     }
